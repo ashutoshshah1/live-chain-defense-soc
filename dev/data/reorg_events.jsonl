@@ -1,0 +1,2 @@
+{"chain":"ethereum","timestamp":"2026-03-01T10:00:00Z","block_number":1000,"tx_hash":"0xaaa1","from_address":"0xTreasury","to_address":"0xOps","amount_usd":12000,"event_type":"transfer","metadata":{"block_hash":"0xblockA","log_index":1}}
+{"chain":"ethereum","timestamp":"2026-03-01T10:00:04Z","block_number":1000,"tx_hash":"0xbbb2","from_address":"0xTreasury","to_address":"0xAttacker","amount_usd":1300000,"event_type":"transfer","metadata":{"block_hash":"0xblockB","log_index":2}}

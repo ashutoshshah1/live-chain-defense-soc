@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Chain Defense</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/web/styles.css" />
+  </head>
+  <body>
+    <div class="bg-orb bg-orb-a" aria-hidden="true"></div>
+    <div class="bg-orb bg-orb-b" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <main class="page">
+      <header class="hero glass">
+        <div>
+          <p class="eyebrow">Security Operations Center</p>
+          <h1>Live Chain Defense Dashboard</h1>
+          <p class="subhead">
+            Real-time visibility into drain risks, campaign activity, and protocol safety posture.
+          </p>
+        </div>
+        <div class="auth-card">
+          <label for="api-key">Dashboard API Key</label>
+          <div class="auth-row">
+            <input id="api-key" type="password" placeholder="Enter API key" autocomplete="off" />
+            <button id="save-key" type="button">Save</button>
+            <button id="run-demo" type="button" class="secondary-btn">Run Demo</button>
+          </div>
+          <p id="auth-status" class="muted">API key not set. Public health data only.</p>
+        </div>
+      </header>
+
+      <section class="stats-grid">
+        <article class="stat glass">
+          <p class="stat-label">Environment</p>
+          <p id="stat-env" class="stat-value">-</p>
+        </article>
+        <article class="stat glass">
+          <p class="stat-label">Uptime Ratio</p>
+          <p id="stat-uptime" class="stat-value">-</p>
+        </article>
+        <article class="stat glass">
+          <p class="stat-label">Avg Latency</p>
+          <p id="stat-latency" class="stat-value">-</p>
+        </article>
+        <article class="stat glass">
+          <p class="stat-label">Open Incidents</p>
+          <p id="stat-incidents" class="stat-value">-</p>
+        </article>
+        <article class="stat glass">
+          <p class="stat-label">Alerts</p>
+          <p id="stat-alerts" class="stat-value">-</p>
+        </article>
+        <article class="stat glass">
+          <p class="stat-label">Campaigns</p>
+          <p id="stat-campaigns" class="stat-value">-</p>
+        </article>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel glass">
+          <div class="panel-head">
+            <h2>Latest Alerts</h2>
+            <span id="alerts-meta" class="pill">-</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Severity</th>
+                  <th>Risk</th>
+                  <th>Chain</th>
+                  <th>From</th>
+                  <th>Message</th>
+                </tr>
+              </thead>
+              <tbody id="alerts-body"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel glass">
+          <div class="panel-head">
+            <h2>Active Incidents</h2>
+            <span id="incidents-meta" class="pill">-</span>
+          </div>
+          <ul id="incidents-list" class="incident-list"></ul>
+        </article>
+
+        <article class="panel glass">
+          <div class="panel-head">
+            <h2>Campaign Watch</h2>
+            <span id="campaigns-meta" class="pill">-</span>
+          </div>
+          <ul id="campaigns-list" class="campaign-list"></ul>
+        </article>
+
+        <article class="panel glass">
+          <div class="panel-head">
+            <h2>SLO Posture</h2>
+            <span id="slo-meta" class="pill">-</span>
+          </div>
+          <div class="slo-block">
+            <p><span>Latency target</span><strong id="slo-latency-target">-</strong></p>
+            <p><span>Uptime target</span><strong id="slo-uptime-target">-</strong></p>
+            <p><span>Failover drills</span><strong id="slo-drills">-</strong></p>
+          </div>
+        </article>
+
+        <article class="panel glass panel-wide">
+          <div class="panel-head">
+            <h2>Notification Channels</h2>
+            <span id="notifications-meta" class="pill">-</span>
+          </div>
+          <p class="muted panel-note">
+            Choose where alerts are sent. Webhook is delivered directly, other providers are queued for your external integrations.
+          </p>
+          <form id="notify-form" class="notify-form">
+            <select id="notify-provider" aria-label="Provider">
+              <option value="in_app">In-App</option>
+              <option value="slack">Slack</option>
+              <option value="pagerduty">PagerDuty</option>
+              <option value="telegram">Telegram</option>
+              <option value="email">Email</option>
+              <option value="webhook">Webhook</option>
+            </select>
+            <input id="notify-destination" type="text" placeholder="Destination (email, webhook URL, channel id, etc.)" required />
+            <select id="notify-severity" aria-label="Minimum severity">
+              <option value="high">High+</option>
+              <option value="critical">Critical only</option>
+              <option value="medium">Medium+</option>
+              <option value="low">All severities</option>
+            </select>
+            <button type="submit">Add Channel</button>
+            <button id="notify-test-all" class="secondary-btn" type="button">Test Channels</button>
+          </form>
+          <ul id="notifications-list" class="notification-list"></ul>
+        </article>
+      </section>
+
+      <footer class="foot muted">
+        <span id="last-refresh">Last refresh: -</span>
+        <span id="dashboard-status">Status: loading</span>
+      </footer>
+    </main>
+
+    <script src="/web/app.js" defer></script>
+  </body>
+</html>

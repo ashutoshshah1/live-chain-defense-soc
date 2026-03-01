@@ -1,0 +1,2 @@
+{"chain":"ethereum","tx_hash":"0xpendA","from_address":"0xTreasury","to_address":"0xVendor","method":"transfer","value_usd":30000,"gas_price_gwei":20}
+{"chain":"ethereum","tx_hash":"0xpendB","from_address":"0xTreasury","to_address":"0xAttackerA","method":"transfer","value_usd":1900000,"gas_price_gwei":140}
